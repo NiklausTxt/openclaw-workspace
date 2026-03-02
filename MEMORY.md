@@ -10,6 +10,14 @@
 - **小红书账号**: 19101465631
 - **素材目录**: `/Users/tongxiaotong/littleCat/`
 
+## GitHub 配置
+
+- **仓库**: https://github.com/NiklausTxt/openclaw-workspace
+- **本地路径**: `~/.openclaw/workspace`
+- **Git 用户**: NiklausTxt (tongxiaotong139@163.com)
+- **认证**: GitHub CLI (gh) + 浏览器授权
+- **自动化**: 每日提交 + 大改动自动提交（待配置）
+
 ---
 
 持续更新中。
