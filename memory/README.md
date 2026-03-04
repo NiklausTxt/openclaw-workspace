@@ -1,84 +1,91 @@
-# Memory 目录结构
+# 记忆文件系统 (V2 任务管理系统)
 
-## 📁 目录组织
+## 目录结构
 
 ```
 memory/
-├── README.md                  # 本文件
-├── MEMORY.md                  # 长期记忆（精炼的知识、决策、配置）
-├── daily-notes/               # 按日期组织的日常记录
-│   ├── 2026-03-02.md         # 2026-03-02的原始日志
-│   ├── 2026-03-03.md         # 2026-03-03的原始日志
-│   ├── 2026-03-04.md         # 2026-03-04的原始日志
-│   └── ...
-├── projects/                  # 项目相关的记录
-│   ├── jianjun-xiaohongshu/   # 建军小红书运营项目
-│   │   ├── 2026-03-02-xiaohongshu-note-upload.md
-│   │   └── ...
-│   └── daily-life/            # 日常闲聊和其他内容（默认项目）
-│       ├── 2026-03-04-stock-automation.md
-│       └── ...
-└── archive/                   # 归档的旧记录（超过30天）
-    └── ...
+├── tasks/                    # 任务目录
+│   └── <task_id>/           # 具体任务
+│       ├── goal.md           # 任务目标
+│       ├── context.md        # 任务背景
+│       ├── chat-log.md       # 聊天日志
+│       ├── decisions.md      # 决策记录
+│       └── status.json       # 任务状态
+├── raw-chat/                 # 原始聊天记录
+│   └── raw-chat-YYYY-MM-DD.md
+├── active/                   # 活跃任务状态
+│   ├── current-task.md      # 当前任务信息（JSON）
+│   └── change-log.md        # 任务切换日志
+├── projects/                # 项目相关记录
+│   ├── INDEX.md
+│   ├── jianjun-xiaohongshu/
+│   └── daily-life/
+└── archive/                 # 归档记录
 ```
 
-## 📝 文件说明
+## 任务管理系统命令
 
-### daily-notes/
-按日期组织的原始日志，记录每天的所有事件和操作：
+### 切换任务
+```
+/switch_task <task_id>  或 /st <task_id>
+```
+- 指定 task_id：切换到该任务（不存在则创建）
+- 不指定 task_id：切换到 raw-chat-<latest-date>
 
-- **事件** - 按时间线记录的对话和操作
-- **操作记录** - 表格形式记录exec命令
-- **⚠️ 敏感信息访问** - 敏感操作追踪
-- **备注** - 其他补充
+### 更新任务
+```
+/update_task 或 /ut
+```
+- 根据聊天记录更新当前任务
+- 自动分类内容到对应文件
 
-**命名规则**: `YYYY-MM-DD.md`
+### 关闭任务
+```
+/close_task 或 /ct
+```
+- 标记当前任务为 completed
+- 清空活跃任务状态
 
-### projects/
-项目相关的详细记录：
+### 查看当前任务
+```
+/current_task 或 /ctask
+```
+- 显示当前活跃任务信息
 
-- **jianjun-xiaohongshu/** - 建军小红书运营项目的所有记录
-  - 笔记上传
-  - 直播调研
-  - 内容策略
-  - 数据分析
-- **daily-life/** - 日常闲聊和其他内容（默认项目）
-  - 股票交易
-  - 技术设置
-  - 其他临时项目
+## 文件规范
 
-### MEMORY.md
-从daily notes和projects中提炼出的长期记忆：
+### status.json 格式
+```json
+{
+    "task_id": "任务ID",
+    "created_at": "ISO8601时间",
+    "updated_at": "ISO8601时间",
+    "state": "active|paused|completed",
+    "version": 版本号
+}
+```
 
-- 家庭成员信息
-- GitHub配置
-- 自动化配置
-- 重要决策和经验
+### current-task.md 格式
+```json
+{
+    "active": true|false,
+    "task_id": "任务ID或null",
+    "started_at": "ISO8601时间或null"
+}
+```
 
-### archive/
-超过30天的daily notes移到这里，保持memory目录整洁。
+### 更新时间戳格式
+统一使用 ISO8601 UTC: `YYYY-MM-DDTHH:MM:SSZ`
 
-## 🔍 使用指南
+## 安全约束
 
-### 新记录的创建
+- 所有 JSON 文件必须合法
+- 不允许覆盖已有内容
+- 所有追加必须带时间戳
+- 命令必须幂等
 
-1. **daily-notes** - 每天的自动同步会创建/更新 `YYYY-MM-DD.md`
-2. **projects** - 重要项目内容会在对应项目目录创建独立文件
+---
 
-### 查找历史记录
-
-1. **按日期查找** - 查看 `daily-notes/YYYY-MM-DD.md`
-2. **按项目查找** - 查看 `projects/[项目名]/`
-3. **长期记忆** - 查看 `MEMORY.md`
-
-### 归档规则
-
-- daily-notes超过30天的文件移到 `archive/`
-- archive按年份子目录组织：`archive/2026/`、`archive/2027/` 等
-
-## 🔄 维护建议
-
-- **每日** - hourly-sync cron 自动更新 daily-notes
-- **每周** - 检查projects分类是否准确
-- **每月** - 归档旧的daily notes到archive
-- **每季度** - 更新MEMORY.md，提炼长期记忆
+**创建时间**: 2026-03-04
+**版本**: V2.0
+**规范来源**: memory-manual.md
