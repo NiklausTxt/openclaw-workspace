@@ -1,5 +1,33 @@
 # MEMORY.md - 长期记忆
 
+## Memory 目录结构
+
+从2026-03-04开始，memory目录重新组织为：
+
+```
+memory/
+├── README.md                  # 本目录使用说明
+├── MEMORY.md                  # 本文件 - 长期记忆
+├── daily-notes/               # 按日期组织的日常记录（自动同步）
+│   ├── 2026-03-02.md
+│   └── ...
+├── projects/                  # 项目相关记录
+│   ├── INDEX.md              # 项目索引
+│   ├── jianjun-xiaohongshu/  # 建军小红书运营项目
+│   └── daily-life/           # 日常闲聊和其他内容（默认项目）
+└── archive/                   # 归档的旧记录（超过30天）
+```
+
+### 详细说明
+- **daily-notes/** - 每天的原始日志，包括事件、操作记录、敏感信息访问
+- **projects/jianjun-xiaohongshu/** - 建军小红书运营专项
+- **projects/daily-life/** - 股票交易、技术设置、其他内容
+- **MEMORY.md** - 从daily notes和projects提炼的长期记忆（本文件）
+
+详见 `memory/README.md`
+
+---
+
 ## 家庭成员
 
 ### 建军 🐱
