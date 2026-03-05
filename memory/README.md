@@ -51,6 +51,14 @@ memory/
 ```
 - 显示当前活跃任务信息
 
+### 暂停任务
+```
+/deactivate_task
+```
+- 切换到无活跃任务状态
+- 记忆只同步到 `memory/YYYY-MM-DD.md`
+- 不会同步到任何 task 文件
+
 ## 文件规范
 
 ### status.json 格式

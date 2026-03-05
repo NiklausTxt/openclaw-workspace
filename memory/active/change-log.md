@@ -17,3 +17,10 @@ to: trading_simulation
 reason: manual_switch (创建并切换到交易模拟任务)
 
 ---
+
+## 2026-03-05T18:19:36Z
+from: trading_simulation
+to: none
+reason: manual_switch (切换到无活跃任务状态)
+
+---
