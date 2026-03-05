@@ -64,7 +64,6 @@ def parse_iso8601(time_str):
             # 添加GMT+8时区
             tz = timezone(timedelta(hours=8))
             dt_aware = dt.replace(tzinfo=tz)
-            print(f"   解析时间: {time_str} -> {dt} -> {dt_aware}")
             return dt_aware
         except Exception as e:
             print(f"❌ 解析时间失败: {time_str}, 错误: {e}")
@@ -213,19 +212,9 @@ def filter_executable_tasks(tasks):
         if task["due_time"] is None:
             continue
 
-        # 调试信息
-        print(f"🔍 任务: {task['unique_key']}")
-        print(f"   due_time: {task['due_time']}")
-        print(f"   due_time.tzinfo: {task['due_time'].tzinfo}")
-        print(f"   now: {now}")
-        print(f"   now.tzinfo: {now.tzinfo}")
-
         # 时间比较
         if task["due_time"] > now:
-            print(f"   ❌ 未到执行时间")
             continue
-        else:
-            print(f"   ✅ 可以执行")
 
         # 锁检查
         locked_by = task.get("locked_by")
