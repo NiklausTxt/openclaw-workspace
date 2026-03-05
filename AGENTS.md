@@ -56,7 +56,17 @@ Heartbeat prompt: `Read HEARTBEAT.md if it exists. Follow it strictly. If nothin
 **Use heartbeats to**:
 - Batch checks: email + calendar + notifications
 - Do background work: organize memory, git status, update docs
-- **Review MEMORY.md**: Update from daily files
+- **Review MEMORY.md**: Every few days, read recent `memory/YYYY-MM-DD.md` files, extract important info, update `MEMORY.md`
+
+**MEMORY.md 更新规则**:
+- 新增重要信息（家庭成员、技术配置、自动化规则）
+- 移除过时信息
+- 总结重要决策和经验
+- 关注：
+  - 新家庭成员或重要家庭信息
+  - 技术配置变更
+  - 自动化规则更新
+  - 重要决策或经验教训
 
 **When to reach out**:
 - Important email/calendar event

@@ -10,18 +10,21 @@
 
 **命令**: `/switch_task` 或 `/st`
 **参数**: `[task_id]` (可选)
-**描述**: 切换到指定任务，或创建新任务
+**描述**: 切换到指定任务
 
 **示例**:
 - `/st jianjun-xiaohongshu` - 切换到建军小红书任务
-- `/st` - 切换到原始聊天记录模式
+- `/st trading_simulation` - 切换到交易模拟任务
+- `/st` - 无操作，保持当前任务
 
 **实现逻辑**:
 ```
-1. 若 task_id 为空，自动创建 raw-chat-<date> 任务
+1. 若 task_id 为空，无操作（保持当前任务）
 2. 若 task_id 不存在，创建任务目录结构
-3. 更新 /active/current-task.md
-4. 记录切换日志到 /active/change-log.md
+3. 更新 /memory/active/current-task.md
+4. 记录切换日志到 /memory/active/change-log.md
+5. 若新创建任务，初始化基础文件：
+   - goal.md, context.md, chat-log.md, decisions.md, status.json
 ```
 
 ---
@@ -34,14 +37,16 @@
 
 **实现逻辑**:
 ```
-1. 检查是否有活跃任务
-2. 提取从 started_at 到现在的聊天内容
-3. 语义分析分类：
-   - 目标变化 → goal.md
-   - 背景补充 → context.md
-   - 决策结论 → decisions.md
-   - 普通内容 → chat-log.md
-4. 更新 status.json 时间戳
+1. 读取 /memory/active/current-task.md
+2. 若无活跃任务，报错："无活跃任务，请先使用 /switch_task 切换任务"
+3. 提取从 started_at 到现在的聊天内容
+4. 语义分析分类并追加到对应文件：
+   - 目标变化 → goal.md (追加新版本)
+   - 背景补充 → context.md (追加)
+   - 决策结论 → decisions.md (追加决策条目)
+   - 普通内容 → chat-log.md (追加)
+5. 更新 status.json 的时间戳
+6. 刷新 current-task.md 的 started_at
 ```
 
 ---
@@ -54,10 +59,16 @@
 
 **实现逻辑**:
 ```
-1. 检查是否有活跃任务
-2. 更新 status.json 为 completed
-3. 清空 current-task.md
-4. 记录到 change-log.md
+1. 读取 /memory/active/current-task.md
+2. 若无活跃任务，报错："无活跃任务"
+3. 更新 /memory/tasks/<task_id>/status.json:
+   - state: "completed"
+   - updated_at: <now>
+4. 清空 /memory/active/current-task.md:
+   - active: false
+   - task_id: null
+   - started_at: null
+5. 在 /memory/active/change-log.md 追加切换日志
 ```
 
 ---
@@ -70,11 +81,15 @@
 
 **输出示例**:
 ```
-task_id: demo-task
+task_id: trading_simulation
 state: active
-started_at: 2026-03-04T17:00:00Z
-last_updated: 2026-03-04T17:00:00Z
+started_at: 2026-03-05T10:31:00Z
+last_updated: 2026-03-05T15:00:00Z
 ```
+
+**数据来源**:
+- /memory/active/current-task.md
+- /memory/tasks/<task_id>/status.json
 
 ---
 
@@ -150,9 +165,14 @@ https://your-openclaw-server.com/webhook/feishu
 在飞书命令配置完成前，可以直接在 OpenClaw 中测试：
 
 ```bash
-# 切换任务
-# 直接调用相关函数或命令
-# 例如：读取 /memory/tasks/demo-task/status.json
+# 切换任务（手动实现）
+echo '{"task_id": "trading_simulation", "started_at": "2026-03-05T10:31:00Z"}' > /memory/active/current-task.md
+
+# 更新任务（手动实现）
+# 读取当前任务，分析聊天内容，更新对应文件
+
+# 关闭任务（手动实现）
+# 更新 status.json 为 completed，清空 current-task.md
 ```
 
 ---
@@ -163,7 +183,7 @@ https://your-openclaw-server.com/webhook/feishu
 A: 检查机器人权限是否已授权，回调URL是否正确。
 
 ### Q: task_id 怎么命名？
-A: 建议使用 kebab-case，如 `jianjun-xiaohongshu`, `daily-notes`。
+A: 建议使用 kebab-case，如 `jianjun-xiaohongshu`, `trading_simulation`。
 
 ### Q: 如何查看所有任务？
 A: 读取 `/memory/tasks/` 目录，列出所有子目录。
@@ -171,7 +191,13 @@ A: 读取 `/memory/tasks/` 目录，列出所有子目录。
 ### Q: 任务可以暂停吗？
 A: 可以，在 status.json 中将 state 设为 `paused`。
 
+### Q: chat-log.md 和 daily memory 会重复吗？
+A: 可能会，但这是设计如此：
+- chat-log.md: 记录任务相关的聊天内容（任务特定）
+- daily memory (memory/YYYY-MM-DD.md): 记录每日重要事件（全局）
+- 如果没有活跃任务，不会产生 chat-log.md 的重复
+
 ---
 
-**创建时间**: 2026-03-04
-**相关文件**: memory-manual.md
+**创建时间**: 2026-03-05
+**相关文件**: memory/README.md, AGENTS.md
