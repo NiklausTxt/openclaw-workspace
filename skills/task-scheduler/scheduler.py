@@ -46,18 +46,23 @@ def write_file(path, content):
 
 
 def parse_iso8601(time_str):
-    """解析ISO8601格式时间"""
+    """解析时间格式 (YYYY-MM-DD HH:MM:SS 或 ISO8601)"""
     if not time_str or time_str == "-":
         return None
     try:
+        # 尝试解析为ISO8601格式（带时区）
         dt = datetime.fromisoformat(time_str)
-        # 如果没有时区信息，添加UTC时区
-        if dt.tzinfo is None:
-            dt = dt.replace(tzinfo=timezone.utc)
         return dt
-    except Exception as e:
-        print(f"❌ 解析时间失败: {time_str}, 错误: {e}")
-        return None
+    except:
+        try:
+            # 如果ISO8601解析失败，尝试解析为简单格式 (YYYY-MM-DD HH:MM:SS)
+            # 假设为GMT+8时区
+            dt = datetime.strptime(time_str, "%Y-%m-%d %H:%M:%S")
+            dt = dt.replace(tzinfo=timezone(timedelta(hours=8)))
+            return dt
+        except Exception as e:
+            print(f"❌ 解析时间失败: {time_str}, 错误: {e}")
+            return None
 
 
 def format_iso8601(dt):
