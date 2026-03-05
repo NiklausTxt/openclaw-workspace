@@ -2,7 +2,7 @@
   "task_name": "trading_simulation",
   "created_at": "2026-03-05T10:31:00+08:00",
   "phase": "trading_execution",
-  "status": "holding",
+  "status": "empty",
   "progress": {
     "total_milestones": 4,
     "completed_milestones": 3,
@@ -31,28 +31,15 @@
     ]
   },
   "current_position": {
-    "stocks": [
-      {
-        "code": "688883",
-        "name": "麦澜德",
-        "quantity": 500,
-        "cost_price": 41.50,
-        "cost_value": 20750,
-        "current_price": 41.50,
-        "current_value": 20750,
-        "pnl": 0,
-        "pnl_percentage": 0,
-        "status": "holding"
-      }
-    ],
-    "total_position": 20750,
-    "cash": 79250,
+    "stocks": [],
+    "total_position": 0,
+    "cash": 100000,
     "total_value": 100000,
     "pnl": 0,
     "pnl_percentage": 0
   },
   "trading_history": {
-    "total_trades": 1,
+    "total_trades": 2,
     "winning_trades": 0,
     "losing_trades": 0,
     "win_rate": 0,
@@ -77,6 +64,6 @@
       "CPO/算力"
     ]
   },
-  "last_updated": "2026-03-05T15:06:00+08:00",
-  "summary": "已执行第一笔交易：买入麦澜德500股（20,750元）。当前持仓麦澜德，成本41.50元，浮动盈亏0。等待止损/止盈触发。"
+  "last_updated": "2026-03-05T17:52:00+08:00",
+  "summary": "卖出麦澜德500股（错误买入：科创板股票），平仓退出，无盈亏。回到空仓状态。"
 }
