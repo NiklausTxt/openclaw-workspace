@@ -1,5 +1,9 @@
-{
-    "active": true,
-    "task_id": "jianjun-xhs",
-    "started_at": "2026-03-04T17:35:00Z"
-}
+# 当前任务
+
+**任务名称**: trading_simulation
+**切换时间**: 2026-03-05 10:31:00
+**状态**: active
+
+---
+
+*此文件记录当前激活的任务*

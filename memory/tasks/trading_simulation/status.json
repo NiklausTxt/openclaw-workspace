@@ -1,0 +1,65 @@
+{
+  "task_name": "trading_simulation",
+  "created_at": "2026-03-05T10:31:00+08:00",
+  "phase": "trading_execution",
+  "status": "waiting_for_entry_opportunity",
+  "progress": {
+    "total_milestones": 4,
+    "completed_milestones": 2,
+    "percentage": 50,
+    "milestones": [
+      {
+        "name": "系统初始化",
+        "status": "completed",
+        "completed_at": "2026-03-05T10:45:00+08:00"
+      },
+      {
+        "name": "策略制定",
+        "status": "completed",
+        "completed_at": "2026-03-05T11:30:00+08:00"
+      },
+      {
+        "name": "开始交易",
+        "status": "in_progress",
+        "started_at": "2026-03-05T11:32:00+08:00"
+      },
+      {
+        "name": "完成交易",
+        "status": "pending"
+      }
+    ]
+  },
+  "current_position": {
+    "stocks": [],
+    "total_position": 0,
+    "cash": 100000,
+    "total_value": 100000,
+    "pnl": 0,
+    "pnl_percentage": 0
+  },
+  "trading_history": {
+    "total_trades": 0,
+    "winning_trades": 0,
+    "losing_trades": 0,
+    "win_rate": 0
+  },
+  "market_status": {
+    "date": "2026-03-05",
+    "sh_index": 4115.94,
+    "sh_change": "+0.82%",
+    "sz_index": null,
+    "sz_change": "+1.66%",
+    "cyb_index": null,
+    "cyb_change": "+2.42%",
+    "volume": 1.52,
+    "volume_change": "-919亿",
+    "market_sentiment": "强势反弹",
+    "hot_sectors": [
+      "脑机接口 (+3.44%)",
+      "电力 (+2.39%)",
+      "CPO/算力"
+    ]
+  },
+  "last_updated": "2026-03-05T11:35:00+08:00",
+  "summary": "已完成上午所有准备工作，下午将按照执行计划积极寻找买入机会。主要目标：脑机接口板块（麦澜德、翔宇医疗、世纪华通），备选：电力板块（上海电力、晋控电力）"
+}
