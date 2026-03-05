@@ -14,7 +14,7 @@ import re
 # 配置
 WORKSPACE = Path.home() / ".openclaw" / "workspace"
 MEMORY_DIR = WORKSPACE / "memory"
-TASKS_DIR = WORKSPACE / "tasks"
+TASKS_DIR = MEMORY_DIR / "tasks"
 EXECUTION_LOG = MEMORY_DIR / "scheduler_execution_log.md"
 LOCK_FILE = MEMORY_DIR / "scheduler_lock.json"
 LOCK_EXPIRE_MINUTES = 10  # 调度器锁过期时间
