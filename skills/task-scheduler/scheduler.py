@@ -50,8 +50,13 @@ def parse_iso8601(time_str):
     if not time_str or time_str == "-":
         return None
     try:
-        return datetime.fromisoformat(time_str)
-    except:
+        dt = datetime.fromisoformat(time_str)
+        # 如果没有时区信息，添加UTC时区
+        if dt.tzinfo is None:
+            dt = dt.replace(tzinfo=timezone.utc)
+        return dt
+    except Exception as e:
+        print(f"❌ 解析时间失败: {time_str}, 错误: {e}")
         return None
 
 
