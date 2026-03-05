@@ -4,6 +4,7 @@
 
 ```
 memory/
+├── YYYY-MM-DD.md              # 每日记忆（重要事件、操作记录）
 ├── tasks/                    # 任务目录
 │   └── <task_id>/           # 具体任务
 │       ├── goal.md           # 任务目标
@@ -11,8 +12,6 @@ memory/
 │       ├── chat-log.md       # 聊天日志
 │       ├── decisions.md      # 决策记录
 │       └── status.json       # 任务状态
-├── raw-chat/                 # 原始聊天记录
-│   └── raw-chat-YYYY-MM-DD.md
 ├── active/                   # 活跃任务状态
 │   ├── current-task.md      # 当前任务信息（JSON）
 │   └── change-log.md        # 任务切换日志
@@ -30,7 +29,7 @@ memory/
 /switch_task <task_id>  或 /st <task_id>
 ```
 - 指定 task_id：切换到该任务（不存在则创建）
-- 不指定 task_id：切换到 raw-chat-<latest-date>
+- 不指定 task_id：切换到当前激活的任务（无操作）
 
 ### 更新任务
 ```
