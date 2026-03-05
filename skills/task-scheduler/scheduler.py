@@ -56,10 +56,11 @@ def parse_iso8601(time_str):
 
 
 def format_iso8601(dt):
-    """格式化为ISO8601格式"""
+    """格式化为 日期+时间格式 (YYYY-MM-DD HH:MM:SS)"""
     if dt is None:
         return "-"
-    return dt.isoformat()
+    # 转换为GMT+8时区的时间字符串
+    return (dt + timedelta(hours=8)).strftime("%Y-%m-%d %H:%M:%S")
 
 
 def get_scheduler_lock():
