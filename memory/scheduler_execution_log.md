@@ -4,8 +4,8 @@
 
 - scheduler_version: 1.0
 - created_at: 2026-03-05T18:45:00+08:00
-- last_scan_time: 2026-03-06 02:30:06
-- last_execution_time: 2026-03-06 02:30:06
+- last_scan_time: 2026-03-06 03:00:55
+- last_execution_time: 2026-03-06 03:00:55
 
 ---
 
@@ -13,6 +13,8 @@
 
 | execute_time | unique_key | task_name | description | status | duration | result | error_message |
 |--------------|------------|-----------|-------------|--------|----------|--------|---------------|
+| 2026-03-06 03:00:55 | test_repeat | 周期性测试 | 每10分钟执行一次 | completed | 0.017324516666666668m | success | - |
+| 2026-03-06 02:40:53 | test_repeat | 周期性测试 | 每10分钟执行一次 | completed | 0.018299600000000003m | success | - |
 | 2026-03-06 02:30:06 | test_repeat | 周期性测试 | 每10分钟执行一次 | completed | 0.01917085m | success | - |
 | 2026-03-05 23:11:24 | test_repeat | 周期性测试 | 每10分钟执行一次 | completed | 0.017920083333333333m | success | - |
 | 2026-03-05T14:50:40.900330+00:00 | test_repeat | 周期性测试 | 每10分钟执行一次 | completed | 0.017920016666666667m | success | - |
