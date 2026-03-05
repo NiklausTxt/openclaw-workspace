@@ -52,14 +52,20 @@ def parse_iso8601(time_str):
     try:
         # 尝试解析为ISO8601格式（带时区）
         dt = datetime.fromisoformat(time_str)
+        # 如果解析成功，检查是否是naive datetime（没有时区信息）
+        if dt.tzinfo is None:
+            # 如果是naive datetime，说明不是标准的ISO8601格式，继续尝试简单格式
+            raise ValueError("naive datetime")
         return dt
     except:
         try:
             # 如果ISO8601解析失败，尝试解析为简单格式 (YYYY-MM-DD HH:MM:SS)
-            # 假设为GMT+8时区
             dt = datetime.strptime(time_str, "%Y-%m-%d %H:%M:%S")
-            dt = dt.replace(tzinfo=timezone(timedelta(hours=8)))
-            return dt
+            # 添加GMT+8时区
+            tz = timezone(timedelta(hours=8))
+            dt_aware = dt.replace(tzinfo=tz)
+            print(f"   解析时间: {time_str} -> {dt} -> {dt_aware}")
+            return dt_aware
         except Exception as e:
             print(f"❌ 解析时间失败: {time_str}, 错误: {e}")
             return None
@@ -206,8 +212,20 @@ def filter_executable_tasks(tasks):
         # 时间检查
         if task["due_time"] is None:
             continue
+
+        # 调试信息
+        print(f"🔍 任务: {task['unique_key']}")
+        print(f"   due_time: {task['due_time']}")
+        print(f"   due_time.tzinfo: {task['due_time'].tzinfo}")
+        print(f"   now: {now}")
+        print(f"   now.tzinfo: {now.tzinfo}")
+
+        # 时间比较
         if task["due_time"] > now:
+            print(f"   ❌ 未到执行时间")
             continue
+        else:
+            print(f"   ✅ 可以执行")
 
         # 锁检查
         locked_by = task.get("locked_by")
