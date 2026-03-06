@@ -13,7 +13,7 @@
 | unique_key | task_name | description | due_time | priority | timeout | max_retries | next_execute_after | status | last_execution | locked_by | locked_at |
 |------------|-----------|-------------|----------|----------|---------|-------------|-------------------|--------|----------------|-----------|-----------|
 |test_hello|测试任务|这是一个测试任务|2026-03-05T18:45:00+08:00|normal|5|3|-|completed|2026-03-05T10:46:12.447222+00:00|-|-|
-|test_repeat|周期性测试|每10分钟执行一次|2026-03-06 22:11:36|normal|5|3|10m|pending|2026-03-06 22:01:36|-|-|
+|test_repeat|周期性测试|每10分钟执行一次|2026-03-06 22:51:23|normal|5|3|10m|pending|2026-03-06 22:41:23|-|-|
 
 ---
 
@@ -21,6 +21,8 @@
 
 | unique_key | status | execute_time | result | error_message |
 |------------|--------|--------------|--------|---------------|
+| test_repeat | completed | 2026-03-06 22:41:23 | success | - |
+| test_repeat | completed | 2026-03-06 22:11:45 | success | - |
 | test_repeat | completed | 2026-03-06 22:01:36 | success | - |
 | test_repeat | completed | 2026-03-06 21:41:02 | success | - |
 | test_repeat | completed | 2026-03-06 21:30:43 | success | - |

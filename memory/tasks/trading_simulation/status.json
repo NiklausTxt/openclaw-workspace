@@ -1,12 +1,13 @@
 {
   "task_name": "trading_simulation",
   "created_at": "2026-03-05T10:31:00+08:00",
-  "phase": "trading_execution",
+  "updated_at": "2026-03-06T22:40:00+08:00",
+  "phase": "reserch_and_reselection",
   "status": "empty",
   "progress": {
-    "total_milestones": 4,
+    "total_milestones": 5,
     "completed_milestones": 3,
-    "percentage": 75,
+    "percentage": 60,
     "milestones": [
       {
         "name": "系统初始化",
@@ -24,9 +25,18 @@
         "completed_at": "2026-03-05T14:34:00+08:00"
       },
       {
-        "name": "完成交易",
+        "name": "A股常识学习",
+        "status": "completed",
+        "completed_at": "2026-03-06T22:30:00+08:00"
+      },
+      {
+        "name": "重新筛选目标标",
         "status": "in_progress",
-        "started_at": "2026-03-05T14:34:00+08:00"
+        "started_at": "2026-03-06T22:30:00+08:00"
+      },
+      {
+        "name": "执行首笔有效交易",
+        "status": "pending"
       }
     ]
   },
@@ -45,25 +55,130 @@
     "win_rate": 0,
     "max_profit": 0,
     "max_loss": 0,
-    "max_drawdown": 0
+    "max_drawdown": 0,
+    "invalid_trades": 1
   },
   "market_status": {
-    "date": "2026-03-05",
-    "sh_index": 4095.84,
-    "sh_change": "+0.33%",
+    "date": "2026-03-06",
+    "sh_index": "4124.19",
+    "sh_change": "+0.38%",
     "sz_index": null,
-    "sz_change": null,
+    "sz_change": "+0.59%",
     "cyb_index": null,
-    "cyb_change": "+1.16%",
-    "volume": 2.18,
-    "volume_change": "+66亿",
-    "market_sentiment": "回调中，成交放量",
+    "cyb_change": "+0.38%",
+    "volume": "2.22",
+    "volume_change": "-1933亿",
+    "market_sentiment": "缩量上涨，独立走强",
     "hot_sectors": [
-      "脑机接口 (+2.07%)",
-      "电力 (+2.39%)",
-      "CPO/算力"
+      "脑机接口 (+1.96%)",
+      "人工智能",
+      "数字经济"
     ]
   },
-  "last_updated": "2026-03-05T18:14:18+08:00",
-  "summary": "卖出麦澜德500股（错误买入：科创板股票），平仓退出，无盈亏。回到空仓状态。"
+  "errors_corrected": [
+    {
+      "error_type": "权限错误",
+      "description": "买入了科创板股票（麦澜德 688883），需要2年经验+50万资产",
+      "corrected_at": "2026-03-05T17:52:00+08:00",
+      "action": "立即平仓，无盈亏"
+    },
+    {
+      "error_type": "选股错误",
+      "description": "目标标全是科创板股票（688883、688610），都不能买",
+      "corrected_at": "2026-03-06T22:30:00+08:00",
+      "action": "重新学习A股常识，删除科创板标的"
+    },
+    {
+      "error_type": "时间错误",
+      "description": "3月7日是周六休市，之前设置成交易日",
+      "corrected_at": "2026-03-06T22:30:00+08:00",
+      "action": "所有任务调整到3月10日（周一）"
+    },
+    {
+      "error_type": "观察频率错误",
+      "description": "之前只关注下午14:00-15:00，放弃了上午9:30-11:30的机会",
+      "corrected_at": "2026-03-06T22:20:00+08:00",
+      "action": "改为开市每30分钟观察，闭市每天20:00复盘"
+    }
+  ],
+  "lessons_learned": [
+    "股票代码规则：60/00/002可买，300/688/8不可买",
+    "交易时间：周一至周五9:30-11:30、13:00-15:00，周六周日休市",
+    "观察频率：开市每30分钟（高频率），闭市每天1次（低频率）",
+    "不要放弃上午：9:30-11:30是黄金时间",
+    "定时器是提醒器：不是触发器，需要主动更新todolist"
+  ],
+  "next_steps": [
+    "使用browser查看主板/中小板热门板块",
+    "筛选符合策略的股票（涨幅-3%~+5%）",
+    "确保代码是60xxxx、00xxxx、002xxxx",
+    "3月10日（周一）开始执行首笔有效交易",
+    "严格执行风险控制：止损-5%，止盈+8%/+15%"
+  ],
+  "watchlist": {
+    "available_stocks": [
+      {
+        "name": "世纪华通",
+        "code": "002602",
+        "sector": "中小板",
+        "can_trade": true,
+        "target_price": 17.50,
+        "current_price": 18.22,
+        "change": "+0.50%"
+      }
+    ],
+    "need_to_add": [
+      "主板热门标的（00xxxx、60xxxx）",
+      "中小板热门标的（002xxxx）",
+      "符合策略的股票（涨幅-3%~+5%）"
+    ],
+    "deleted": [
+      {
+        "name": "麦澜德",
+        "code": "688883",
+        "reason": "科创板，不能买",
+        "deleted_at": "2026-03-06T22:30:00+08:00"
+      },
+      {
+        "name": "翔宇医疗",
+        "code": "688610",
+        "reason": "科创板，不能买",
+        "deleted_at": "2026-03-06T22:30:00+08:00"
+      }
+    ]
+  },
+  "documents_structure": {
+    "task_root": {
+      "status.json": "任务状态",
+      "goal.md": "任务目标",
+      "context.md": "任务背景",
+      "decisions.md": "决策记录",
+      "chat-log.md": "聊天日志",
+      "todo_list.md": "待办清单"
+    },
+    "docs": {
+      "A股交易时间.md": "交易时段说明",
+      "A股交易常识.md": "板块划分、交易权限、选股策略",
+      "capital_status.md": "资金状态",
+      "daily_log.md": "每日日志",
+      "strategy.md": "交易策略",
+      "stock_screening.md": "股票筛选（只包含能买的股票）",
+      "watchlist.md": "观察名单（只包含主板/中小板标的）"
+    },
+    "trades": {
+      "所有交易记录都保留"
+    },
+    "deleted_files": [
+      "REMINDER.md（过时）",
+      "afternoon_checklist.md（已合并到todo_list）",
+      "decision.md（一次性文档）",
+      "execution_plan.md（一次性文档）",
+      "market_analysis.md（一次性文档）",
+      "morning_summary.md（一次性文档）",
+      "observation_log.md（一次性文档）",
+      "status_14_35.md（临时文档）",
+      "strategy_adjustment.md（一次性文档）"
+    ]
+  },
+  "summary": "A股模拟交易任务，学习阶段完成（系统初始化、策略制定、开始交易、A股常识学习）。发现重大错误：买入科创板股票（不能买）、目标标全是科创板、3月7日是休市日。已纠正：删除科创板标的、学习A股常识、清理无用文件、重构观察体系（开市每30分钟，闭市每天20:00）。当前状态：空仓，等待重新筛选主板/中小板目标标，3月10日（周一）开始执行首笔有效交易。"
 }
