@@ -24,3 +24,24 @@ to: none
 reason: manual_switch (切换到无活跃任务状态)
 
 ---
+
+## 2026-03-06T18:24:00Z
+from: none
+to: jianjun-xhs
+reason: manual_switch (/st jianjun-xhs)
+
+---
+
+## 2026-03-06T13:54:00Z
+from: jianjun-xhs
+to: none
+reason: close_task (/ct - 完成当前任务)
+
+---
+
+## 2026-03-06T14:00:00Z
+from: none
+to: trading_simulation
+reason: manual_switch (/st trading_simulation)
+
+---

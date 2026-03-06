@@ -12,8 +12,8 @@
 
 | unique_key | task_name | description | due_time | priority | timeout | max_retries | next_execute_after | status | last_execution | locked_by | locked_at |
 |------------|-----------|-------------|----------|----------|---------|-------------|-------------------|--------|----------------|-----------|-----------|
-|trading_buy_check|购买检查|检查市场并执行购买（脑机接口、电力板块）|2026-03-06T10:47:40.822685+00:00|high|5|3|1d|pending|2026-03-05T10:47:40.821203+00:00|-|-|
-|trading_daily_review|每日复盘|生成每日交易复盘|2026-03-06T12:00:40.868304+00:00|normal|10|2|1d|pending|2026-03-05T12:00:40.866716+00:00|-|-|
+|trading_buy_check|购买检查|检查市场并执行购买（脑机接口、电力板块）|2026-03-07 18:50:44|high|5|3|1d|pending|2026-03-06 18:50:44|-|-|
+|trading_daily_review|每日复盘|生成每日交易复盘|2026-03-07 20:00:46|normal|10|2|1d|pending|2026-03-06 20:00:46|-|-|
 
 ---
 
@@ -21,6 +21,8 @@
 
 | unique_key | status | execute_time | result | error_message |
 |------------|--------|--------------|--------|---------------|
+| trading_daily_review | completed | 2026-03-06 20:00:46 | success | - |
+| trading_buy_check | completed | 2026-03-06 18:50:44 | success | - |
 | trading_daily_review | completed | 2026-03-05T12:00:40.868407+00:00 | success | - |
 | trading_buy_check | completed | 2026-03-05T10:47:40.822902+00:00 | success | - |
 

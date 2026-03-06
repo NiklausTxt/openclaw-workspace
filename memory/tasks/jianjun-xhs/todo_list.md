@@ -12,7 +12,7 @@
 
 | unique_key | task_name | description | due_time | priority | timeout | max_retries | next_execute_after | status | last_execution | locked_by | locked_at |
 |------------|-----------|-------------|----------|----------|-------------|-------------------|--------|----------------|-----------|-----------|
-| jianjun_daily_post | 小红书每日发布 | 发布小红书内容 | 2026-03-06T10:00:00+08:00 | normal | 30 | 1 | 1d | pending | - | - | - |
+|jianjun_daily_post|小红书每日发布|发布小红书内容|2026-03-07 10:00:44|normal|30|1|1d|pending|2026-03-06 10:00:44|-|-|
 
 ---
 
@@ -20,6 +20,7 @@
 
 | unique_key | status | execute_time | result | error_message |
 |------------|--------|--------------|--------|---------------|
+| jianjun_daily_post | completed | 2026-03-06 10:00:44 | success | - |
 
 ---
 
