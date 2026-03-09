@@ -52,3 +52,10 @@ to: trading_simulation
 reason: manual_switch (/st trading_simulation)
 
 ---
+
+## 2026-03-09T16:43:00Z
+from: trading_simulation
+to: jianjun-xhs
+reason: manual_switch (/st jianjun-xhs)
+
+---
