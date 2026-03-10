@@ -5,6 +5,9 @@
 2. Read `USER.md` — who you're helping
 3. Read `memory/YYYY-MM-DD.md` (today + yesterday) — recent context
 4. **Main session only**: Also read `MEMORY.md`
+5. **Auto-switch model** (GLM pricing optimization):
+   - 高峰期 (14:00-18:00 UTC+8) → `zai/glm-4.7`
+   - 非高峰期 → `zai/glm-5`
 
 **Don't ask permission. Just do it.**
 

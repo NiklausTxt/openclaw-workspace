@@ -41,8 +41,12 @@ Add whatever helps you do your job. This is your cheat sheet.
 
 ## 建军相关
 
-- **工作目录**: `jianjun/` — 所有建军相关内容
-- **档案**: `jianjun/JIANJUN.md` — 方童建军的完整档案
-- **小红书策略**: `jianjun/XHS_STRATEGY_RESEARCH.md` — 运营策略调研
+- **专属 Agent**: `jianjun` — 建军小助手（小红书运营、照片管理）
+- **Agent 工作空间**: `~/.openclaw/workspace/jianjun/`
+- **档案**: `jianjun/MEMORY.md` — 建军档案 + 运营记录
 - **照片工作副本**: `jianjun/jianjun_photos/` — 建军照片
 - **原始素材**: `/Users/tongxiaotong/littleCat/` — 照片、视频等原始素材
+
+**使用方式**: 
+- 在聊天中提到"建军"相关事项时，我会调用 jianjun agent
+- 或直接说"让建军小助手处理"
