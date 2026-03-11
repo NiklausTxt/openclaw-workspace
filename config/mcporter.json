@@ -2,6 +2,27 @@
   "mcpServers": {
     "xiaohongshu": {
       "baseUrl": "http://localhost:18060/mcp"
+    },
+    "web-search-prime": {
+      "type": "http",
+      "url": "https://open.bigmodel.cn/api/mcp/web_search_prime/mcp",
+      "headers": {
+        "Authorization": "Bearer 02ae6f3b3ba044609db999942faea2ca.CCNw7PaPxVmr7gpN"
+      }
+    },
+    "web-reader": {
+      "type": "http",
+      "url": "https://open.bigmodel.cn/api/mcp/web_reader/mcp",
+      "headers": {
+        "Authorization": "Bearer 02ae6f3b3ba044609db999942faea2ca.CCNw7PaPxVmr7gpN"
+      }
+    },
+    "zread": {
+      "type": "http",
+      "url": "https://open.bigmodel.cn/api/mcp/zread/mcp",
+      "headers": {
+        "Authorization": "Bearer 02ae6f3b3ba044609db999942faea2ca.CCNw7PaPxVmr7gpN"
+      }
     }
   },
   "imports": []
