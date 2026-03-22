@@ -50,3 +50,14 @@ Add whatever helps you do your job. This is your cheat sheet.
 **使用方式**: 
 - 在聊天中提到"建军"相关事项时，我会调用 jianjun agent
 - 或直接说"让建军小助手处理"
+
+## ACP Harness 配置
+
+- **默认工作目录**: `/Users/tongxiaotong/solo` — Claude Code / Codex 代码任务默认项目地址
+- **可用 Agent**: `claude`, `codex`
+- **启动方式**: ACP Runtime（`sessions_spawn` + `runtime: "acp"`）
+
+**使用规则**:
+- 所有代码任务（Claude Code / Codex）默认使用 `/Users/tongxiaotong/solo` 作为工作目录
+- 除非用户明确指定其他路径
+- 自动传入 `cwd: "/Users/tongxiaotong/solo"` 参数
